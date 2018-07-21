@@ -1,0 +1,14 @@
+version: "3"
+services:
+  hadoop:
+    image: sequenceiq/hadoop-docker:2.7.0
+    container_name: hadoop
+  spark:
+    image: p7hb/docker-spark:2.2.0
+    container_name: spark
+    ports:
+      - 4040:4040
+      - 8080:8080
+      - 8081:8081
+    tty: true
+    stdin_open: true
