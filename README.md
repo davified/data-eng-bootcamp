@@ -9,6 +9,12 @@
 - `cd $HADOOP_PREFIX`
 - execute commands listed in lab!
 
+### Lab: Spark
+- Activate virtual env: `source .venv_data_eng_bootcamp/bin/activate`
+- Define SPARK_HOME: `export SPARK_HOME=$(pwd)/spark-2.3.1-bin-hadoop2.7`
+- To start spark in spark shell, run: `spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local`
+- To start spark in jupyter notebook, run: `PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=notebook spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local`
+- To deactivate the virtual environment, run: `deactivate`
 
 TODOs
 - add an option/step to mount a data volume with avro files or parquet files
