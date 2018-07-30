@@ -13,3 +13,6 @@ spark-*-bin-hadoop2.7.tgz
 metastore_db
 derby.log
 spark-warehouse
+
+# jupyter notebooks
+**/.ipynb_checkpoints
