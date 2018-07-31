@@ -16,3 +16,6 @@ spark-warehouse
 
 # jupyter notebooks
 **/.ipynb_checkpoints
+
+.idea
+*.iml
