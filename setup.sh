@@ -6,6 +6,12 @@ if [ $? -ne 0 ]; then
   brew cask install docker
 fi
 
+
+open --background -a Docker
+# TODO: properly check if docker daemon is running before opening it again 
+echo "[INFO] Arbitrarily sleeping for 30 seconds while waiting for Docker Daemon to boot up..." 
+sleep 30
+
 echo "[INFO] Pulling Apache Hadoop 2.7.0 Docker image..."
 docker pull sequenceiq/hadoop-docker:2.7.1
 
