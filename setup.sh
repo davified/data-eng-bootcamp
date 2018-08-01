@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Java 1.7+
+# Maven
 
 which docker 
 if [ $? -ne 0 ]; then
@@ -13,9 +15,7 @@ if [ $? -ne 0 ]; then
 fi
 
 open --background -a Docker
-# TODO: properly check if docker daemon is running before opening it again 
-echo "[INFO] Arbitrarily sleeping for 30 seconds while waiting for Docker Daemon to boot up..." 
-#sleep 30
+while ! docker system info > /dev/null 2>&1; do sleep 1 && echo "[INFO] Waiting for docker daemon startup to complete..."; done
 
 echo "[INFO] Pulling Apache Hadoop 2.7.0 Docker image..."
 docker pull sequenceiq/hadoop-docker:2.7.1
