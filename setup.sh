@@ -6,11 +6,16 @@ if [ $? -ne 0 ]; then
   brew cask install docker
 fi
 
+which wget 
+if [ $? -ne 0 ]; then
+  echo "[INFO] Installing wget..."
+  brew install wget 
+fi
 
 open --background -a Docker
 # TODO: properly check if docker daemon is running before opening it again 
 echo "[INFO] Arbitrarily sleeping for 30 seconds while waiting for Docker Daemon to boot up..." 
-sleep 30
+#sleep 30
 
 echo "[INFO] Pulling Apache Hadoop 2.7.0 Docker image..."
 docker pull sequenceiq/hadoop-docker:2.7.1
@@ -40,7 +45,9 @@ fi
 
 echo "Installing dependencies"
 source ${virtual_environment_name}/bin/activate
+pip3 install ipykernel
 pip3 install jupyter
+pip3 install numpy
 python3 -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
 
 echo '============================================='
