@@ -1,3 +1,5 @@
 ipykernel
 jupyter
 numpy
+pytest
+findspark

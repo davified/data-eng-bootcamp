@@ -8,9 +8,11 @@ opt/
 # python virtual environments
 .venv*
 
+# pytest
+.pytest_cache/
+
 # spark binaries
 spark-*-bin-hadoop2.7
-spark-*-bin-hadoop2.7.tgz
 
 # spark generated folders and files
 metastore_db
@@ -20,9 +22,10 @@ spark-warehouse
 # jupyter notebooks
 **/.ipynb_checkpoints
 
-# intelliJ
+# IDE generated stuff
 .idea
 *.iml
+.vscode
 
 # java projects
 .classpath
