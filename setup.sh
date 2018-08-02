@@ -46,9 +46,7 @@ fi
 
 echo "Installing dependencies"
 source ${virtual_environment_name}/bin/activate
-pip3 install ipykernel
-pip3 install jupyter
-pip3 install numpy
+pip3 install -r requirements.txt
 python3 -m ipykernel install --user --name ${virtual_environment_name} --display-name "${virtual_environment_name}"
 
 echo '============================================='
