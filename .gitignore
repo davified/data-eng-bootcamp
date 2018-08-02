@@ -29,5 +29,8 @@ spark-warehouse
 .project
 .settings/
 
+# python projects
+__pycache__
+
 # GCP credentials
 twsg-data-eng-bootcamp*.json 
