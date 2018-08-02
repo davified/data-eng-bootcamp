@@ -1,23 +1,28 @@
 #!/usr/bin/env bash
-# Java 1.7+
-# Maven
 
 install_brew_formula() {
-  local dependency=$1
+  local dependency_name=$1
   local use_cask=$2
+  local executable_name=$3
 
-  which $dependency 
+  if [[ $3 == '' ]]; then
+    executable_name=$dependency_name
+  fi
+
+  which $executable_name
   if [ $? -ne 0 ]; then
-    echo "[INFO] Installing $dependency..."
-    if [ $use_cask == "--cask" ]; then
-      brew cask install $dependency
+    echo "[INFO] Installing $dependency_name..."
+    if [[ $use_cask == "--cask" ]]; then
+      brew cask install $dependency_name
     else
-      brew install $dependency
+      brew install $dependency_name
     fi
   fi
 }
 
 install_brew_formula "docker" "--cask"
+install_brew_formula "java" "--cask"
+install_brew_formula "maven" "" "mvn"
 install_brew_formula "wget"
 install_brew_formula "python3"
 
@@ -58,7 +63,7 @@ echo '[INFO] docker run -v $(pwd)/data:/usr/local/data/ -it sequenceiq/hadoop-do
 echo ''
 echo '[INFO] ======= Commands for Spark Lab ======='
 echo "[INFO] To activate virtual env: source ${virtual_environment_name}/bin/activate"
-echo "[INFO] Define spark home: export SPARK_HOME=spark-2.3.1-bin-hadoop2.7"
-echo '[INFO] To start spark in spark shell, run: spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local'
+echo '[INFO] Define spark home: export SPARK_HOME=$(pwd)/spark-2.3.1-bin-hadoop2.7'
+echo '[INFO] To start spark in spark shell, run: $SPARK_HOME/bin/pyspark --master local'
 echo '[INFO] To start spark in jupyter environment, run: PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=notebook spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local'
 echo '[INFO] To deactivate the virtual environment, run: deactivate'
