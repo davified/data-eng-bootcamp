@@ -17,5 +17,11 @@ spark-warehouse
 # jupyter notebooks
 **/.ipynb_checkpoints
 
+# intelliJ
 .idea
 *.iml
+
+# java projects
+.classpath
+.project
+.settings/
