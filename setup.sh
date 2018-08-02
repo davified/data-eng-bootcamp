@@ -2,17 +2,24 @@
 # Java 1.7+
 # Maven
 
-which docker 
-if [ $? -ne 0 ]; then
-  echo "[INFO] Installing docker..."
-  brew cask install docker
-fi
+install_brew_formula() {
+  local dependency=$1
+  local use_cask=$2
 
-which wget 
-if [ $? -ne 0 ]; then
-  echo "[INFO] Installing wget..."
-  brew install wget 
-fi
+  which $dependency 
+  if [ $? -ne 0 ]; then
+    echo "[INFO] Installing $dependency..."
+    if [ $use_cask == "--cask" ]; then
+      brew cask install $dependency
+    else
+      brew install $dependency
+    fi
+  fi
+}
+
+install_brew_formula "docker" "--cask"
+install_brew_formula "wget"
+install_brew_formula "python3"
 
 open --background -a Docker
 while ! docker system info > /dev/null 2>&1; do sleep 1 && echo "[INFO] Waiting for docker daemon startup to complete..."; done
@@ -30,12 +37,6 @@ if [[ ! -d spark-2.3.1-bin-hadoop2.7 ]]; then
 fi
 
 echo "[INFO] Spark installed."
-
-which python3
-if [ $? -ne 0 ]; then
-  echo "[INFO] Installing python 3"
-  brew install python3
-fi
 
 virtual_environment_name=.venv_data_eng_bootcamp
 if [ ! -d ${virtual_environment_name} ]; then
