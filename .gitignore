@@ -2,6 +2,9 @@
 data/*
 !data/_keep
 
+# downloads
+opt/
+
 # python virtual environments
 .venv*
 
@@ -25,3 +28,6 @@ spark-warehouse
 .classpath
 .project
 .settings/
+
+# GCP credentials
+twsg-data-eng-bootcamp*.json 

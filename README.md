@@ -3,10 +3,11 @@
 ### Setup
 - Fork and clone repo
 - Run `./setup.sh`
+- Run `./get_data.sh`
 
 If you encounter any problems during the setup or during the labs, check our [troubleshooting guide](./troubleshooting-faq.md).
 
-### Prerequisites
+#### Prerequisites
 - An IDE (IntelliJ is recommended)
 
 ### Lab: HDFS
@@ -15,12 +16,8 @@ If you encounter any problems during the setup or during the labs, check our [tr
 - execute commands listed in lab!
 
 ### Lab: Spark
-- Activate virtual env: `source .venv_data_eng_bootcamp/bin/activate`
 - Define SPARK_HOME: `export SPARK_HOME=$(pwd)/spark-2.3.1-bin-hadoop2.7`
-- To start spark in spark shell, run: `spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local`
-- To start spark in jupyter notebook, run: `PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=notebook spark-2.3.1-bin-hadoop2.7/bin/pyspark --master local`
+- Activate virtual env: `source .venv_data_eng_bootcamp/bin/activate`
+- To start spark in spark shell, run: `$SPARK_HOME/bin/pyspark --master local`
+- To start spark in jupyter notebook, run: `PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS=notebook $SPARK_HOME/bin/pyspark --master local`
 - To deactivate the virtual environment, run: `deactivate`
-
-TODOs
-- add script to download data (from a GCP bucket?)
-- add an option/step to mount a data volume with avro files or parquet files
