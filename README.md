@@ -11,7 +11,7 @@ If you encounter any problems during the setup or during the labs, check our [tr
 - An IDE (IntelliJ is recommended)
 
 ### Lab: HDFS
-- Run bash shell in container: `docker run -it sequenceiq/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash`
+- Run bash shell in container: `docker run -v $(pwd)/data:/usr/local/data/ -it sequenceiq/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash`
 - `cd $HADOOP_PREFIX`
 - execute commands listed in lab!
 
