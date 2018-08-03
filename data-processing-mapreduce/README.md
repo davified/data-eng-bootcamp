@@ -588,7 +588,7 @@ Then we run `mvn package` inside of project folder. after running success we wil
 #### Run the MapReduce program
 - Use below script to put the **sample.txt** into HDFS
 ```
-bin/hadoop dfs -put /datatraining/src/main/resources/sample.txt /
+cd $HADOOP_PREFIX && bin/hadoop dfs -put /datatraining/src/main/resources/sample.txt /
 ```
 - Use below scripts to run the MapReduce program
 ```
