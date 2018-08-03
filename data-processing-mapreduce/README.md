@@ -15,8 +15,12 @@ Below are steps we will go through:
 - Create sample data
 - Run the program inside of IDE
 
-#### Create maven project 
-In this session, we create a maven project with below info
+### Steps for setting up
+
+#### Step 1. Create maven project 
+##### Option 1:  Create maven project with IntelliJ
+
+Create a new Maven project with IntelliJ with below info:
 ```xml
 <modelVersion>4.0.0</modelVersion>
 <groupId>com.bootcamp.practice</groupId>
@@ -25,22 +29,35 @@ In this session, we create a maven project with below info
 ```
 If you have any problems please check this [link](https://www.jetbrains.com/help/idea/maven-support.html) to see how to create maven project
 
-#### Import maven dependencies
-In order to write MapReduce program, we need to have below dependencies
-```xml
- <dependencies>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-client</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-    </dependencies>
+##### Option 2:  Create maven project from terminal
+If you want to create project with maven, check below:
 ```
+mvn archetype:generate -DgroupId=twsg-data-eng-bootcamp \
+   -DartifactId=mapreduce-lab \
+   -DarchetypeArtifactId=maven-archetype-quickstart  \
+   -DinteractiveMode=false
+```
+
+#### Step 2. Import maven dependencies
+In order to write MapReduce program, we need to have below dependencies. Add the following snippet in `pom.xml` 
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-common</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+</dependencies>
+
+```
+
+## Writing our MapReduce program!
+
 #### Create Mapper
 Before we create a mapper, we create package `com.practice.mapreduce.wordcount` to hold all the wordcount classes.
 
@@ -174,7 +191,7 @@ Note:
 - `setJarByClass` will help the program to finding where a given class came from. if we didn't set, it will throw `ClassNotFoundException`
 
 #### Create sample data
-This is simple. we just create some sample txt file `sample.txt` inside or `resources` folder. 
+This is simple. we just create some sample txt file `sample.txt` inside `resources` folder. 
 we put below very simple content first
 ```
 hello world
@@ -183,8 +200,10 @@ hello hadoop
 
 #### Run the program inside of IDE
 
-- Config the params for the wordcount program
-- Run and check the output
+1. Click on the Run button next to the Driver class (it's green), and wait for the build to complete
+2. Right click resources/sample.txt and Copy Path
+3. On the top right of the screen, click on Driver > 'Edit configurations...'. Paste the path to sample.txt as indicated in the screenshot below.
+4. Run and check the output
 
 The program config in IDE looks like below:
 
