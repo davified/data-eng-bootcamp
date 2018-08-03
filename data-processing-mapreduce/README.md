@@ -32,8 +32,8 @@ If you have any problems please check this [link](https://www.jetbrains.com/help
 ##### Option 2:  Create maven project from terminal
 If you want to create project with maven, check below:
 ```
-mvn archetype:generate -DgroupId=twsg-data-eng-bootcamp \
-   -DartifactId=mapreduce-lab \
+mvn archetype:generate -DgroupId=com.bootcamp.practice \
+   -DartifactId=data-training \
    -DarchetypeArtifactId=maven-archetype-quickstart  \
    -DinteractiveMode=false
 ```
@@ -531,7 +531,7 @@ Check the [sequenceiq/hadoop-docker](https://github.com/sequenceiq/hadoop-docker
 
 In order to mount volume we used below script to start container:
 ```
-docker run -v /Users/sgmxxiao/Developer/projects/data-training:/datatraining -it sequenceiq/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash
+docker run -v /path/to/project/folder:/datatraining -it sequenceiq/hadoop-docker:2.7.1 /etc/bootstrap.sh -bash
 ```
 
 #### Package code to `jar` file
