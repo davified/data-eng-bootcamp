@@ -4,6 +4,7 @@ data/*
 
 # downloads
 opt/
+!opt/_keep
 
 # python virtual environments
 .venv*
