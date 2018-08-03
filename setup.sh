@@ -26,11 +26,15 @@ install_brew_formula "maven" "" "mvn"
 install_brew_formula "wget"
 install_brew_formula "python3"
 
+
+
 open --background -a Docker
 while ! docker system info > /dev/null 2>&1; do sleep 1 && echo "[INFO] Waiting for docker daemon startup to complete..."; done
 
 echo "[INFO] Pulling Apache Hadoop 2.7.0 Docker image..."
 docker pull sequenceiq/hadoop-docker:2.7.1
+
+mkdir -p opt
 
 echo "[INFO] Downloading and installing Spark..."
 if [[ ! -f ./opt/spark-2.3.1-bin-hadoop2.7.tgz ]]; then
