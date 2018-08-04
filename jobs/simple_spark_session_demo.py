@@ -1,4 +1,4 @@
-"""SimpleSparkSessionDemo.py"""
+"""simple_spark_session_demo.py"""
 from pyspark.sql import SparkSession
 
 
