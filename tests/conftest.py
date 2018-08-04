@@ -5,12 +5,13 @@
 import findspark  # this needs to be the first import
 findspark.init()
 
+import os
+
 import logging
 import pytest
 
-from pyspark import HiveContext
 from pyspark import SparkConf
-from pyspark import SparkContext
+from pyspark.sql import SparkSession
 
 
 def quiet_py4j():
@@ -18,21 +19,16 @@ def quiet_py4j():
     logger = logging.getLogger('py4j')
     logger.setLevel(logging.WARN)
 
-
 @pytest.fixture(scope="session")
-def spark_context(request):
-    """ fixture for creating a spark context """
-    conf = (SparkConf().setMaster("local[2]").setAppName("pytest-pyspark-local-testing"))
-    sc = SparkContext(conf=conf)
-    request.addfinalizer(lambda: sc.stop())
+def spark_session(request):
+    """Fixture for creating a spark context."""
+
+    spark = (SparkSession.builder
+                .master("local[2]")
+                .appName("pytest-pyspark-local-testing-2")
+                .getOrCreate())
+
+    request.addfinalizer(lambda: spark.stop())
 
     quiet_py4j()
-    return sc
-
-
-@pytest.fixture(scope="session")
-def hive_context(spark_context):
-    """  fixture for creating a Hive Context. Creating a fixture enables it to be reused across all
-        tests in a session
-    """
-    return HiveContext(spark_context)
+    return spark
