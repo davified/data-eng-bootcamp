@@ -42,7 +42,7 @@ if [[ ! -f ./opt/spark-2.3.1-bin-hadoop2.7.tgz ]]; then
 fi
 
 if [[ ! -d spark-2.3.1-bin-hadoop2.7 ]]; then
-  tar xvf ./opt/spark-2.3.1-bin-hadoop2.7.tgz -C ..
+  tar xvf ./opt/spark-2.3.1-bin-hadoop2.7.tgz -C .
 fi
 
 echo "[INFO] Spark installed."
